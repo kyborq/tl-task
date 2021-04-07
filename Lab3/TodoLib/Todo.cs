@@ -8,7 +8,7 @@ namespace TodoLib
 {
     public class Todo : ITodo
     {
-        public List<ITask> Tasks;
+        private List<ITask> Tasks;
        
         public Todo()
         {
@@ -24,6 +24,10 @@ namespace TodoLib
         public void ToggleTask(int TaskID)
         {
             Tasks[TaskID].State = true;       
+        }
+        public List<ITask> Get()
+        {
+            return Tasks;
         }
     }
 }

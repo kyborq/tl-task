@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using TodoLib;
 
 namespace Lab3
@@ -7,15 +8,17 @@ namespace Lab3
     {
         static void Main(string[] args)
         {
-            Todo MyTodo = new Todo();
-
+            ITodo MyTodo = new Todo();
+                        
             MyTodo.Add("First task");
             MyTodo.Add("Second task");
             MyTodo.Add("Third task");
 
             MyTodo.ToggleTask(1);
-            
-            foreach (Task task in MyTodo.Tasks)
+
+            List<ITask> tasks = MyTodo.Get();
+
+            foreach (Task task in tasks)
             {
                 Console.WriteLine($"Todo: {task.Label}, {task.State}");  
             }
