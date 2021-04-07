@@ -15,9 +15,9 @@ namespace Lab3
 
             MyTodo.ToggleTask(1);
             
-            for (int i = 0; i < MyTodo.Tasks.Count; i++)
+            foreach (Task task in MyTodo.Tasks)
             {
-                Console.WriteLine($"Todo: {MyTodo.Tasks[i].Label}, {MyTodo.Tasks[i].State}");
+                Console.WriteLine($"Todo: {task.Label}, {task.State}");  
             }
         }
     }
