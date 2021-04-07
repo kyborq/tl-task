@@ -5,7 +5,7 @@ namespace TodoLib
 {
     public interface ITodo
     {
-        void Add(string task);
+        void AddTask(string taskTitle);
         List<ITask> Get();
         void ToggleTask(int TaskID);
     }

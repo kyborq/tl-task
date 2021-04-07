@@ -14,10 +14,10 @@ namespace TodoLib
         {
             Tasks = new List<ITask>();
         }
-        public void Add(string task)
+        public void AddTask(string taskTitle)
         {
             ITask NewTask = new Task();
-            NewTask.Label = task;
+            NewTask.Label = taskTitle;
             NewTask.State = false;
             Tasks.Add(NewTask);
         }
