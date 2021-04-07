@@ -8,8 +8,12 @@ namespace TodoLib
 {
     public class Todo : ITodo
     {
-        public List<ITask> Tasks = new List<ITask>();
+        public List<ITask> Tasks;
        
+        public Todo()
+        {
+            Tasks = new List<ITask>();
+        }
         public void Add(string task)
         {
             ITask NewTask = new Task();
