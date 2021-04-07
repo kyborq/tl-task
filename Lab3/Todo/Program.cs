@@ -10,9 +10,9 @@ namespace Lab3
         {
             ITodo MyTodo = new Todo();
                         
-            MyTodo.Add("First task");
-            MyTodo.Add("Second task");
-            MyTodo.Add("Third task");
+            MyTodo.AddTask("First task");
+            MyTodo.AddTask("Second task");
+            MyTodo.AddTask("Third task");
 
             MyTodo.ToggleTask(1);
 
