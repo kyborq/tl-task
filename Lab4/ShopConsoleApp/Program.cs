@@ -18,19 +18,25 @@ namespace ShopConsoleApp
                 List<Customer> customers = ReadCustomers();
                 foreach (Customer customer in customers)
                 {
-                    Console.WriteLine(customer.Name + " " + customer.City);
+                    // Console.WriteLine(customer.CustomerId + ": " + customer.Name + " " + customer.City);
+                    Console.WriteLine($"ID: {customer.CustomerId, -3} {customer.Name, -30} {customer.City}");
                 }
             }
 
             if (command == "insert")
             {
-                int createdCustomerId = InsertCustomer("Иванов Иван Иванович", "Москва");
+                int createdCustomerId = InsertCustomer("Иванов Иван Иванович", "Чебоксары");
                 Console.WriteLine("Created customer: " + createdCustomerId);
             }
 
             if (command == "update")
             {
-                UpdateCustomer(4, "Иванов Иван Иванович", "Йошкар-Ола");
+                UpdateCustomer(3, "Абвгд Еёжз Иклмн", "Чебоксары");
+            }
+
+            if (command == "stats")
+            {
+                ShowStats();
             }
         }
 
@@ -94,10 +100,11 @@ namespace ShopConsoleApp
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
+                connection.Open();
                 using (SqlCommand command = connection.CreateCommand())
                 {
                     command.CommandText = @"
-                        UPDATE [Customer]
+                        UPDATE Customer
                         SET [Name] = @name, [City] = @city
                         WHERE CustomerId = @customerId";
 
@@ -110,9 +117,33 @@ namespace ShopConsoleApp
             }
         }
 
-        private static void ShowStat()
+        private static void ShowStats()
         {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandText =
+                        @"SELECT [Customer].[Name], COUNT([Order].[ProductName]) AS 'Amount', COALESCE(SUM([Order].[Price]), 0) AS 'Sum'
+                            FROM[Order]
+                            INNER JOIN[Customer] ON[Order].[CustomerId] = [Customer].[CustomerId]
+                            GROUP BY[Customer].[Name]";
 
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        Console.WriteLine($"{"Name",-35} {"Amount",-6} {"Sum",-5}");
+                        while (reader.Read())
+                        {
+                            string name = Convert.ToString(reader["Name"]);
+                            int amount = Convert.ToInt32(reader["Amount"]);
+                            int sum = Convert.ToInt32(reader["Sum"]);
+                            Console.WriteLine($"{name, -35} {amount, -6} {sum, -5}");
+                        } 
+                    }
+                }
+            }
         }
     }
 }
