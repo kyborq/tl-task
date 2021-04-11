@@ -21,7 +21,7 @@ namespace TodoLib
         {
             Tasks[TaskID].State = true;       
         }
-        public List<ITask> Get()
+        public List<ITask> GetTasks()
         {
             return Tasks;
         }

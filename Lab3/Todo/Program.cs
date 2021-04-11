@@ -16,7 +16,7 @@ namespace Lab3
 
             MyTodo.ToggleTask(1);
 
-            List<ITask> tasks = MyTodo.Get();
+            List<ITask> tasks = MyTodo.GetTasks();
 
             foreach (Task task in tasks)
             {
