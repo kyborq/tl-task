@@ -12,7 +12,7 @@ namespace TodoLib
         }
         public void AddTask(string taskTitle)
         {
-            ITask NewTask = new Task();
+            ITask NewTask = new Task(taskTitle);
             NewTask.Label = taskTitle;
             NewTask.State = false;
             Tasks.Add(NewTask);

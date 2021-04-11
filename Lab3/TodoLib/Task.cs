@@ -5,10 +5,10 @@
         public bool State { get; set; }
         public string Label { get; set; }
 
-        public Task()
+        public Task(string taskLabel)
         {
             State = false;
-            Label = "";
+            Label = taskLabel;
         }
 
         public void Set(bool NewState)
