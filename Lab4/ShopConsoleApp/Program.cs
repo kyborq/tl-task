@@ -24,13 +24,20 @@ namespace ShopConsoleApp
 
             if (command == "insert")
             {
-                int createdCustomerId = InsertCustomer("Иванов Иван Иванович", "Чебоксары");
+                string customerName = args[1];
+                string customerCity = args[2];
+                int createdCustomerId = InsertCustomer(customerName, customerCity);
+
                 Console.WriteLine("Created customer: " + createdCustomerId);
             }
 
             if (command == "update")
             {
-                UpdateCustomer(3, "Абвгд Еёжз Иклмн", "Чебоксары");
+                int customerId = Convert.ToInt32(args[1]);
+                string customerName = args[2];
+                string customerCity = args[3];
+
+                UpdateCustomer(customerId, customerName, customerCity);
             }
 
             if (command == "stats")
