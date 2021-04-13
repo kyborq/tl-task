@@ -18,7 +18,6 @@ namespace ShopConsoleApp
                 List<Customer> customers = ReadCustomers();
                 foreach (Customer customer in customers)
                 {
-                    // Console.WriteLine(customer.CustomerId + ": " + customer.Name + " " + customer.City);
                     Console.WriteLine($"ID: {customer.CustomerId, -3} {customer.Name, -30} {customer.City}");
                 }
             }
