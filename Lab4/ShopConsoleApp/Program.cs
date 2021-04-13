@@ -127,8 +127,8 @@ namespace ShopConsoleApp
                     command.CommandText =
                         @"SELECT [Customer].[Name], COUNT([Order].[ProductName]) AS 'Amount', COALESCE(SUM([Order].[Price]), 0) AS 'Sum'
                             FROM[Order]
-                            INNER JOIN[Customer] ON[Order].[CustomerId] = [Customer].[CustomerId]
-                            GROUP BY[Customer].[Name]";
+                            INNER JOIN[Customer] ON [Order].[CustomerId] = [Customer].[CustomerId]
+                            GROUP BY [Customer].[Name]";
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
