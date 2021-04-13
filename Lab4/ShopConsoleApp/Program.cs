@@ -133,6 +133,7 @@ namespace ShopConsoleApp
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         Console.WriteLine($"{"Name",-35} {"Amount",-6} {"Sum",-5}");
+
                         while (reader.Read())
                         {
                             string name = Convert.ToString(reader["Name"]);
