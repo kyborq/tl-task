@@ -1,0 +1,22 @@
+<div class="todo-page">
+
+  <div class="todo-form">
+
+    <mat-form-field class="task-field">
+      <mat-label>Task</mat-label>
+      <input matInput [(ngModel)]="newTodo" placeholder="Something to do">
+    </mat-form-field>
+    
+    <button mat-flat-button color="primary" (click)="addTaskHandler()" >Add</button>
+
+  </div>
+
+  <div class="todo-list" *ngFor="let todo of todos">
+    <mat-checkbox class="task" [(ngModel)]="todo.done">
+      <span [class.active]="todo.done">
+        {{todo.name}}
+      </span>
+    </mat-checkbox>
+  </div>
+
+</div>

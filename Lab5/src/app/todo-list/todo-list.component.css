@@ -1,0 +1,26 @@
+.todo-page {
+  width: 450px;
+  height: 100vh;
+  margin: auto;
+  overflow: hidden;
+}
+
+.task-field {
+  flex: 1;
+  margin-right: 16px;
+}
+
+.todo-form {
+  margin-top: 128px;
+  display: flex;
+  align-items: center;
+}
+
+.task {
+  width: 100%;
+  margin: 16px 0;
+}
+
+.active {
+  text-decoration: line-through;
+}
